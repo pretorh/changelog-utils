@@ -1,7 +1,8 @@
 import changelogParser from 'changelog-parser';
 import semver from 'semver';
+import { IParsedChangelog } from './types';
 
-export default async function parse(content: string) {
+export default async function parse(content: string): Promise<IParsedChangelog> {
   const parsed = await changelogParser({
     text: content,
   });
