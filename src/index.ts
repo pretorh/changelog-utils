@@ -25,6 +25,6 @@ export default async function parse(content: string): Promise<IParsedChangelog> 
 
   return {
     version,
-    versions: parsed.versions,
+    releases: parsed.versions,
   };
 }

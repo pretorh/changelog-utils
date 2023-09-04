@@ -9,9 +9,6 @@ which parses based on http://keepachangelog.com
 
 ## ideas
 
-Lib ideas:
-- Cleanup return types (add interfaces, rename fields)
-
 Cli ideas:
 - Formatting changelogs for Google Play release notes
 - Bumping versions in files (with an `rc` file to defined rules)

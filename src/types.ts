@@ -2,7 +2,7 @@ import { ChangelogParserVersion } from './internal';
 
 export interface IParsedChangelog {
   version: IParsedVersionDetails;
-  versions: ChangelogParserVersion[];
+  releases: ChangelogParserVersion[];
 }
 
 interface IParsedVersionDetails {
