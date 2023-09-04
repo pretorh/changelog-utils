@@ -1,4 +1,5 @@
 import changelogParser from 'changelog-parser';
+import semver from 'semver';
 
 export default async function parse(content: string) {
   const parsed = await changelogParser({
@@ -7,11 +8,17 @@ export default async function parse(content: string) {
 
   const indexOfLatest = parsed.versions
     .findIndex((v: { version: string | null }) => v.version !== null);
+  const latestVersion = parsed.versions[indexOfLatest].version;
 
   const version = {
     latest: {
-      name: parsed.versions[indexOfLatest].version,
+      name: latestVersion,
       date: parsed.versions[indexOfLatest].date,
+    },
+    next: {
+      major: semver.inc(latestVersion || '', 'major'),
+      minor: semver.inc(latestVersion || '', 'minor'),
+      patch: semver.inc(latestVersion || '', 'patch'),
     },
   };
 

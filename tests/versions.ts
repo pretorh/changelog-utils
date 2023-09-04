@@ -14,4 +14,21 @@ describe('get version details', () => {
     expect(parsed.version.latest.name).to.eql('0.0.3');
     expect(parsed.version.latest.date).to.eql('2023-01-03');
   });
+
+  describe('next version', () => {
+    it('major', async () => {
+      const parsed = await parseChangelog(basicChangelog);
+      expect(parsed.version.next.major).to.eql('1.0.0');
+    });
+
+    it('minor', async () => {
+      const parsed = await parseChangelog(basicChangelog);
+      expect(parsed.version.next.minor).to.eql('0.1.0');
+    });
+
+    it('patch', async () => {
+      const parsed = await parseChangelog(basicChangelog);
+      expect(parsed.version.next.patch).to.eql('0.0.4');
+    });
+  });
 });

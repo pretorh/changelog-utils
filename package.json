@@ -26,6 +26,7 @@
   "author": "Hendri Pretorius",
   "license": "MIT",
   "dependencies": {
-    "changelog-parser": "^3.0.1"
+    "changelog-parser": "^3.0.1",
+    "semver": "^7.5.4"
   }
 }

@@ -10,7 +10,6 @@ which parses based on http://keepachangelog.com
 ## ideas
 
 Lib ideas:
-- Generating next version numbers
 - Cleanup return types (add interfaces, rename fields)
 
 Cli ideas:
