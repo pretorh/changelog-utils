@@ -5,10 +5,13 @@ export default async function parse(content: string) {
     text: content,
   });
 
+  const indexOfLatest = parsed.versions
+    .findIndex((v: { version: string | null }) => v.version !== null);
+
   const version = {
     latest: {
-      name: parsed.versions[0].version,
-      date: parsed.versions[0].date,
+      name: parsed.versions[indexOfLatest].version,
+      date: parsed.versions[indexOfLatest].date,
     },
   };
 

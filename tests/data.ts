@@ -1,5 +1,7 @@
+const header = '# changelog';
+
 const basicChangelog = `
-# changelog
+${header}
 
 ## 0.0.3 - 2023-01-03
 
@@ -31,5 +33,16 @@ const basicChangelog = `
 
 - B
 `;
+
+export function withUnreleased() {
+  const unreleased = `
+## Unreleased
+
+### Added
+
+- More changes to A
+`;
+  return header + unreleased + basicChangelog.replace(header, '');
+}
 
 export default basicChangelog;
