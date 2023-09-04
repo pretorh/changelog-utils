@@ -1,0 +1,17 @@
+{
+  "exclude": [
+    "out/"
+  ],
+  "compilerOptions": {
+    "target": "es2016",
+    "lib": [ "esnext" ],
+    "module": "commonjs",
+    "declaration": true,
+    "outDir": "./out",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "changelog-utils",
+  "version": "0.0.0",
+  "description": "A collection of utilities to parse changelogs and build release notes",
+  "main": "out/src/index.js",
+  "files": ["out/src"],
+  "scripts": {
+    "build": "npm run tsc && npm test && npm run lint",
+    "tsc": "tsc",
+    "lint": "eslint .",
+    "test": "mocha out/tests/"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.5",
+    "@types/mocha": "^10.0.1",
+    "chai": "^4.3.8",
+    "eslint": "^8.48.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.2.0"
+  },
+  "author": "Hendri Pretorius",
+  "license": "MIT"
+}
