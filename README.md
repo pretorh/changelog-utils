@@ -2,11 +2,16 @@
 
 A collection of utilities to parse changelogs, build release notes and manage versions numbers.
 
+## api and usage
+
+Uses `changelog-parser` for the lower level [parsing of `CHANGELOG.md`](https://github.com/ungoldman/changelog-parser#standards),
+which parses based on http://keepachangelog.com
+
 ## ideas
 
 Lib ideas:
-- Parse `CHANGELOG.md` to details object
 - Generating next version numbers
+- Cleanup return types (add interfaces, rename fields)
 
 Cli ideas:
 - Formatting changelogs for Google Play release notes

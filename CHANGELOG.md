@@ -4,4 +4,4 @@
 
 ### Added
 
-- Initialize project
+- Basic library function for parsing changelogs using `changelog-parser`
