@@ -10,6 +10,8 @@ export default async function parse(content: string): Promise<IParsedChangelog> 
   const indexOfLatest = parsed.versions
     .findIndex((v: { version: string | null }) => v.version !== null);
   const latestVersion = parsed.versions[indexOfLatest].version;
+  const unreleased = parsed.versions
+    .find((v: { version: string | null }) => v.version === null);
 
   const version = {
     latest: {
@@ -26,5 +28,6 @@ export default async function parse(content: string): Promise<IParsedChangelog> 
   return {
     version,
     releases: parsed.versions,
+    unreleased,
   };
 }
