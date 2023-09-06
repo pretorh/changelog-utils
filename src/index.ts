@@ -16,7 +16,7 @@ export default async function parse(content: string): Promise<IParsedChangelog> 
   const defaultVersion = '0.0.0';
   const version = {
     latest: {
-      name: latestVersion,
+      name: latestVersion || defaultVersion,
       date: parsed.versions[indexOfLatest]?.date,
     },
     next: {

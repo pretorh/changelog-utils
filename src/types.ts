@@ -12,7 +12,7 @@ interface IParsedVersionDetails {
 }
 
 interface IVersion {
-  name: string | null;
+  name: string;
   date: string | null;
 }
 

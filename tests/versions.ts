@@ -15,6 +15,12 @@ describe('get version details', () => {
     expect(parsed.version.latest.date).to.eql('2023-01-03');
   });
 
+  it('unreleased-only is version 0.0.0', async () => {
+    const parsed = await parseChangelog('# Changelog');
+    expect(parsed.version.latest.name).to.eql('0.0.0');
+    expect(parsed.version.latest.date).to.eql(undefined);
+  });
+
   describe('next version', () => {
     it('major', async () => {
       const parsed = await parseChangelog(basicChangelog);
