@@ -30,5 +30,12 @@ describe('get version details', () => {
       const parsed = await parseChangelog(basicChangelog);
       expect(parsed.version.next.patch).to.eql('0.0.4');
     });
+
+    it('next (first) version defaults to 0.0.0', async () => {
+      const result = await parseChangelog('# Changelog');
+      expect(result.version.next.major).to.eql('0.0.0');
+      expect(result.version.next.minor).to.eql('0.0.0');
+      expect(result.version.next.patch).to.eql('0.0.0');
+    });
   });
 });

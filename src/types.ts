@@ -17,7 +17,7 @@ interface IVersion {
 }
 
 interface INextVersions {
-  major: string | null;
-  minor: string | null;
-  patch: string | null;
+  major: string;
+  minor: string;
+  patch: string;
 }

@@ -9,19 +9,20 @@ export default async function parse(content: string): Promise<IParsedChangelog> 
 
   const indexOfLatest = parsed.versions
     .findIndex((v: { version: string | null }) => v.version !== null);
-  const latestVersion = parsed.versions[indexOfLatest].version;
+  const latestVersion = parsed.versions[indexOfLatest]?.version;
   const unreleased = parsed.versions
     .find((v: { version: string | null }) => v.version === null);
 
+  const defaultVersion = '0.0.0';
   const version = {
     latest: {
       name: latestVersion,
-      date: parsed.versions[indexOfLatest].date,
+      date: parsed.versions[indexOfLatest]?.date,
     },
     next: {
-      major: semver.inc(latestVersion || '', 'major'),
-      minor: semver.inc(latestVersion || '', 'minor'),
-      patch: semver.inc(latestVersion || '', 'patch'),
+      major: semver.inc(latestVersion || '', 'major') || defaultVersion,
+      minor: semver.inc(latestVersion || '', 'minor') || defaultVersion,
+      patch: semver.inc(latestVersion || '', 'patch') || defaultVersion,
     },
   };
 

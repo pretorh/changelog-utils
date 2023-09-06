@@ -28,4 +28,22 @@ describe('can parse changelog into details', () => {
       expect(result.unreleased?.parsed?.Added).to.eql(['More changes to A']);
     });
   });
+
+  describe('empty changelogs', () => {
+    it('works for empty changelog', async () => {
+      const result = await parseChangelog('# Changelog');
+      expect(result.releases).to.have.length(0);
+    });
+
+    it('works with unreleased-only changelog', async () => {
+      const result = await parseChangelog(`# Changelog
+
+## Unreleased
+
+### Added
+
+- Things`);
+      expect(result.releases).to.have.length(1);
+    });
+  });
 });
