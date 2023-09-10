@@ -45,4 +45,14 @@ export function withUnreleased() {
   return header + unreleased + basicChangelog.replace(header, '');
 }
 
+export function singleEntry(headerName: string) {
+  return `
+## 0.0.0
+
+### ${headerName}
+
+- Single change
+`;
+}
+
 export default basicChangelog;
