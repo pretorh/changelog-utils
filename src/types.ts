@@ -1,9 +1,7 @@
-import { ChangelogParserVersion } from './internal';
-
 export interface IParsedChangelog {
   version: IParsedVersionDetails;
-  releases: ChangelogParserVersion[];
-  unreleased: ChangelogParserVersion | undefined;
+  releases: IParsedRelease[];
+  unreleased: IParsedRelease | undefined;
 }
 
 interface IParsedVersionDetails {
@@ -20,4 +18,10 @@ interface INextVersions {
   major: string;
   minor: string;
   patch: string;
+}
+
+export interface IParsedRelease {
+  version: string | null;
+  date: string | null;
+  parsed: Record<string, string[]>;
 }

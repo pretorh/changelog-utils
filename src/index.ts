@@ -1,6 +1,7 @@
 import changelogParser from 'changelog-parser';
 import semver from 'semver';
 import { IParsedChangelog } from './types';
+import mapReleaseDetails from './mapping';
 
 export default async function parse(content: string): Promise<IParsedChangelog> {
   const parsed = await changelogParser({
@@ -28,7 +29,7 @@ export default async function parse(content: string): Promise<IParsedChangelog> 
 
   return {
     version,
-    releases: parsed.versions,
-    unreleased,
+    releases: parsed.versions.map(mapReleaseDetails),
+    unreleased: unreleased ? mapReleaseDetails(unreleased) : undefined,
   };
 }
