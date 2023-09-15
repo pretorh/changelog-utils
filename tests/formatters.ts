@@ -16,9 +16,11 @@ describe('can format changelog to string', () => {
     const expected = '0.0.3 (2023-01-03)\n'
       + '- Added: A3\n'
       + '- Removed: B3\n'
+      + '\n'
       + '0.0.2 (2023-01-02)\n'
       + '- Added: A2\n'
       + '- Removed: B2\n'
+      + '\n'
       + '0.0.0 (2023-01-01)\n'
       + '- Added: A\n'
       + '- Removed: B';
@@ -36,7 +38,7 @@ describe('can format changelog to string', () => {
 
     it('can set the body per release', () => {
       const text = formatChangelog(changelog, placeholderFormatter);
-      expect(text).to.eql('release\nrelease\nrelease');
+      expect(text).to.eql('release\n\nrelease\n\nrelease');
     });
 
     it('can set header before all other text', () => {
@@ -44,7 +46,7 @@ describe('can format changelog to string', () => {
         ...placeholderFormatter,
         header: 'header:\n',
       });
-      expect(text).to.eql('header:\nrelease\nrelease\nrelease');
+      expect(text).to.eql('header:\nrelease\n\nrelease\n\nrelease');
     });
 
     it('can set footer after all other text', () => {
@@ -52,7 +54,15 @@ describe('can format changelog to string', () => {
         ...placeholderFormatter,
         footer: '\nfooter',
       });
-      expect(text).to.eql('release\nrelease\nrelease\nfooter');
+      expect(text).to.eql('release\n\nrelease\n\nrelease\nfooter');
+    });
+
+    it('can set release separator', () => {
+      const text = formatChangelog(changelog, {
+        ...placeholderFormatter,
+        releaseSeparator: '!',
+      });
+      expect(text).to.eql('release!release!release');
     });
   });
 });
