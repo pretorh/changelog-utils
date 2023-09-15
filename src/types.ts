@@ -23,5 +23,11 @@ interface INextVersions {
 export interface IParsedRelease {
   version: string | null;
   date: string | null;
-  parsed: Record<string, string[]>;
+  added: string[];
+  changed: string[];
+  deprecated: string[];
+  removed: string[];
+  fixed: string[];
+  security: string[];
+  parsed: Record<string, string[] | undefined>;
 }

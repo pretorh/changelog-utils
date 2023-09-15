@@ -19,11 +19,11 @@ parse(contents.toString())
         });
       }
 
-      printItems('Added', release.parsed.Added);
-      printItems('Changed', release.parsed.Changed);
-      printItems('Deprecated', release.parsed.Deprecated);
-      printItems('Removed', release.parsed.Removed);
-      printItems('Fixed', release.parsed.Fixed);
-      printItems('Security', release.parsed.Security);
+      printItems('Added', release.added);
+      printItems('Changed', release.changed);
+      printItems('Deprecated', release.deprecated);
+      printItems('Removed', release.removed);
+      printItems('Fixed', release.fixed);
+      printItems('Security', release.security);
     });
   });

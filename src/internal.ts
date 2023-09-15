@@ -4,5 +4,5 @@ export type ChangelogParserVersion = {
   title: string;
   date: string | null;
   body: string;
-  parsed: Record<string, string[]>;
+  parsed: Record<string, string[] | undefined>;
 };
