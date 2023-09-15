@@ -38,5 +38,21 @@ describe('can format changelog to string', () => {
       const text = formatChangelog(changelog, placeholderFormatter);
       expect(text).to.eql('release\nrelease\nrelease');
     });
+
+    it('can set header before all other text', () => {
+      const text = formatChangelog(changelog, {
+        ...placeholderFormatter,
+        header: 'header:\n',
+      });
+      expect(text).to.eql('header:\nrelease\nrelease\nrelease');
+    });
+
+    it('can set footer after all other text', () => {
+      const text = formatChangelog(changelog, {
+        ...placeholderFormatter,
+        footer: '\nfooter',
+      });
+      expect(text).to.eql('release\nrelease\nrelease\nfooter');
+    });
   });
 });
