@@ -6,5 +6,5 @@
 
 - Basic library function for parsing changelogs using `changelog-parser`
 - Determine next version numbers
-- Basic CLI to print the changelog to stdout
+- Basic CLI to print the changelog to `stdout` in "plain text"
 - Typed change types based on https://keepachangelog.com
