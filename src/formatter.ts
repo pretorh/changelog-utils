@@ -5,10 +5,14 @@ export interface IFormatter {
   footer?: string;
   format(release: IParsedRelease): string;
   releaseSeparator?: string;
+  includeRelease? (release: IParsedRelease): boolean;
 }
 
 export function formatChangelog(changelog: IParsedChangelog, formatter: IFormatter): string {
+  const includeRelease = formatter.includeRelease || (() => true);
+
   const releases = changelog.releases
+    .filter(includeRelease)
     .map(formatter.format)
     .join(formatter.releaseSeparator || '\n\n');
 

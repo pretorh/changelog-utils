@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import parseChangelog from '../src';
 import { IFormatter, formatChangelog } from '../src/formatter';
-import { IParsedChangelog } from '../src/types';
+import { IParsedChangelog, IParsedRelease } from '../src/types';
 import basicChangelog from './data';
 import plainTextFormatter from '../src/formatters/plain-text';
 
@@ -63,6 +63,14 @@ describe('can format changelog to string', () => {
         releaseSeparator: '!',
       });
       expect(text).to.eql('release!release!release');
+    });
+
+    it('can filter releases to include', () => {
+      const text = formatChangelog(changelog, {
+        format: (release: IParsedRelease) => release.date || '?',
+        includeRelease: (release: IParsedRelease) => release.version === '0.0.2',
+      });
+      expect(text).to.eql('2023-01-02');
     });
   });
 });
