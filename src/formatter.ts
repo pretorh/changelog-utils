@@ -8,7 +8,9 @@ export interface IFormatter {
 }
 
 export function formatChangelog(changelog: IParsedChangelog, formatter: IFormatter): string {
-  const releases = changelog.releases.map(formatter.format).join(formatter.releaseSeparator || '\n\n');
+  const releases = changelog.releases
+    .map(formatter.format)
+    .join(formatter.releaseSeparator || '\n\n');
 
   return (formatter.header || '') + releases + (formatter.footer || '');
 }
