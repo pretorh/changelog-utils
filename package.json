@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "description": "A collection of utilities to parse changelogs and build release notes",
   "main": "out/src/index.js",
+  "bin": {
+    "changelog-utils": "./out/src/cli.js"
+  },
+  "repository": "https://github.com/pretorh/changelog-utils",
   "files": [
     "out/src"
   ],
