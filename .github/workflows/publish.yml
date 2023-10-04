@@ -2,7 +2,8 @@ name: Prepare publish
 
 on:
   push:
-    branches: [ "master" ]
+    tags:
+      - '*'
 
 jobs:
   package:
