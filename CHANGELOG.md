@@ -5,6 +5,7 @@
 ### Fixed
 
 - Typo in cli error message
+- Make CLI executable
 
 ### Changed
 

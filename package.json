@@ -12,6 +12,7 @@
   ],
   "scripts": {
     "build": "npm run tsc && npm test && npm run lint",
+    "pretsc": "mkdir -p ./out/src/ && touch ./out/src/cli.js && chmod -v +x ./out/src/cli.js",
     "tsc": "tsc",
     "lint": "eslint .",
     "test": "mocha out/tests/"
