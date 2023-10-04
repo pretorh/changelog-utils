@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Changed
+
+- Upgrade dependencies
+
+## 0.0.0
+
 ### Added
 
 - Basic library function for parsing changelogs using `changelog-parser`
