@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixed
+
+- Typo in cli error message
+
 ### Changed
 
 - Upgrade dependencies

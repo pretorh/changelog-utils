@@ -16,7 +16,7 @@ function selectFormatter(param: string) {
     case 'android-string-resource':
       return androidStringResourceFormatter();
     default:
-      throw new Error(`Uknown formatter ${param}`);
+      throw new Error(`Unknown formatter ${param}`);
   }
 }
 
