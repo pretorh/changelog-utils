@@ -1,5 +1,11 @@
 # Changelog
 
+## unreleased
+
+### Added
+
+- Option to parse directly from file (`string` or `{ file: string }` source)
+
 ## 0.0.1
 
 ### Fixed
