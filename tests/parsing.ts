@@ -1,3 +1,4 @@
+import { writeFileSync } from 'fs';
 import { expect } from 'chai';
 import parseChangelog from '../src';
 import basicChangelog, { singleEntry, withUnreleased } from './data';
@@ -9,6 +10,21 @@ describe('can parse changelog into details', () => {
     expect(last.parsed.Added).to.eql(['A']);
     expect(last.parsed.Removed).to.eql(['B']);
     expect(last.date).to.eql('2023-01-01');
+  });
+
+  describe('parse from file', () => {
+    const testFile = 'tests/.basic-changelog.md';
+
+    before('write test file', () => {
+      writeFileSync(testFile, basicChangelog);
+    });
+
+    it('parses the same as text', async () => {
+      const parsedFromString = await parseChangelog(basicChangelog);
+      const parsedFromFile = await parseChangelog({ file: testFile });
+
+      expect(parsedFromFile).to.eqls(parsedFromString);
+    });
   });
 
   it('multiple versions', async () => {

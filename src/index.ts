@@ -3,10 +3,25 @@ import semver from 'semver';
 import { IParsedChangelog } from './types';
 import mapReleaseDetails from './mapping';
 
-export default async function parse(content: string): Promise<IParsedChangelog> {
-  const parsed = await changelogParser({
-    text: content,
-  });
+interface IFileSource {
+  file: string;
+}
+
+type ParseSource = string | IFileSource;
+
+export default async function parse(source: ParseSource): Promise<IParsedChangelog> {
+  function parseSource() {
+    if (typeof source === 'string') {
+      return changelogParser({
+        text: source,
+      });
+    }
+
+    return changelogParser({
+      filePath: source.file,
+    });
+  }
+  const parsed = await parseSource();
 
   const indexOfLatest = parsed.versions
     .findIndex((v: { version: string | null }) => v.version !== null);

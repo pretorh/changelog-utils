@@ -2,3 +2,4 @@
 changelog-utils-*.tgz
 node_modules
 out/
+tests/.*.md

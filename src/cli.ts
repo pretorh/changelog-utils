@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-import { readFileSync } from 'fs';
 import parse from '.';
 import { formatChangelog } from './formatter';
 import androidStringResourceFormatter from './formatters/android-string-resource';
@@ -25,8 +24,7 @@ function selectFormatter(param: string) {
 const filename = process.argv[2];
 const formatter = selectFormatter(process.argv[3]);
 
-const contents = readFileSync(filename);
-parse(contents.toString())
+parse({ file: filename })
   .then((parsed) => {
     process.stdout.write(formatChangelog(parsed, formatter));
   });
