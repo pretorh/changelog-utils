@@ -23,3 +23,5 @@ jobs:
     - run: npm run tsc
     - run: npm test
     - run: npm run lint
+    - name: test cli
+      run: ./tests/cli.sh

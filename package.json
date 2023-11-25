@@ -33,6 +33,7 @@
   "license": "MIT",
   "dependencies": {
     "changelog-parser": "^3.0.1",
+    "commander": "^11.1.0",
     "semver": "^7.5.4"
   }
 }
