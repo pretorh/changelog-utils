@@ -5,6 +5,8 @@
 ### Added
 
 - Option to parse directly from file (`string` or `{ file: string }` source)
+- CLI argument parsing and error handling
+- `commander` dependency for cli argument parsing
 
 ## 0.0.1
 

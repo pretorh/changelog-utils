@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { Command } from 'commander';
 import parse from '.';
 import { formatChangelog } from './formatter';
 import androidStringResourceFormatter from './formatters/android-string-resource';
@@ -21,10 +22,17 @@ function selectFormatter(param: string) {
   }
 }
 
-const filename = process.argv[2];
-const formatter = selectFormatter(process.argv[3]);
-
-parse({ file: filename })
-  .then((parsed) => {
+const program = new Command();
+program
+  .command('format <CHANGELOG-file> [format]', { isDefault: true })
+  .action(async (file: string, format: string) => {
+    const formatter = selectFormatter(format);
+    const parsed = await parse({ file });
     process.stdout.write(formatChangelog(parsed, formatter));
+  });
+
+program.parseAsync()
+  .catch((e) => {
+    process.stderr.write(`Error: ${e.message}\n`);
+    process.exit(1);
   });
