@@ -1,4 +1,5 @@
 import changelogParser from 'changelog-parser';
+import { readFileSync } from 'fs';
 import semver from 'semver';
 import { IParsedChangelog } from './types';
 import mapReleaseDetails from './mapping';
@@ -17,8 +18,9 @@ export default async function parse(source: ParseSource): Promise<IParsedChangel
       });
     }
 
+    const content = readFileSync(source.file);
     return changelogParser({
-      filePath: source.file,
+      text: content.toString(),
     });
   }
   const parsed = await parseSource();

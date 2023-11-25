@@ -25,6 +25,16 @@ describe('can parse changelog into details', () => {
 
       expect(parsedFromFile).to.eqls(parsedFromString);
     });
+
+    it('fails by rejecting promise', async () => {
+      let caughtError = false;
+      try {
+        await parseChangelog({ file: 'non-existing-file' });
+      } catch (e) {
+        caughtError = true;
+      }
+      expect(caughtError).to.eql(true);
+    });
   });
 
   it('multiple versions', async () => {
