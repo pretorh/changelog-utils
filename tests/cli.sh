@@ -24,7 +24,12 @@ fails() {
   _exec 1 "$@"
 }
 
-# formatting
+echo "auto/cli util"
+passes --help
+passes help
+passes --version
+
+echo "formatting"
 passes CHANGELOG.md
 passes CHANGELOG.md latest
 fails CHANGELOG.md invalid-formatter

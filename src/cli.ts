@@ -24,6 +24,11 @@ function selectFormatter(param: string) {
 
 const program = new Command();
 program
+  .name('changelog-utils')
+  .description('CLI for utilities to parse changelogs and build release notes')
+  .version('0.0.1');
+
+program
   .command('format <CHANGELOG-file> [format]', { isDefault: true })
   .action(async (file: string, format: string) => {
     const formatter = selectFormatter(format);
