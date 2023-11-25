@@ -24,4 +24,4 @@ jobs:
     - run: npm test
     - run: npm run lint
     - name: test cli
-      run: ./tests/cli.sh
+      run: prove --directives --failures ./tests/cli.sh

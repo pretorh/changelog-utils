@@ -24,12 +24,15 @@ fails() {
   _exec 1 "$@"
 }
 
-echo "auto/cli util"
+test_count=$(grep --count --extended '^(passes|fails) ' "$0")
+echo "1..$test_count"
+
+echo "# auto/cli util"
 passes --help
 passes help
 passes --version
 
-echo "formatting"
+echo "# formatting"
 passes CHANGELOG.md
 passes CHANGELOG.md latest
 fails CHANGELOG.md invalid-formatter
