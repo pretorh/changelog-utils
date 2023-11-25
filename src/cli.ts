@@ -29,7 +29,10 @@ program
   .version('0.0.1');
 
 program
-  .command('format <CHANGELOG-file> [format]', { isDefault: true })
+  .command('format', { isDefault: true })
+  .description('Formats a changelog using a specified formatter')
+  .argument('<CHANGELOG-file>', 'the changelog file to parse')
+  .argument('[format]', 'the formatter used to print the changelog')
   .action(async (file: string, format: string) => {
     const formatter = selectFormatter(format);
     const parsed = await parse({ file });
