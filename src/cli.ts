@@ -9,7 +9,7 @@ const program = new Command();
 program
   .name('changelog-utils')
   .description('CLI for utilities to parse changelogs and build release notes')
-  .version('0.0.1');
+  .version('0.1.0');
 
 program
   .command('format', { isDefault: true })

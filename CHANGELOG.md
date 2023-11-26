@@ -1,11 +1,11 @@
 # Changelog
 
-## unreleased
+## 0.1.0
 
 ### Added
 
-- Option to parse directly from file (`string` or `{ file: string }` source)
 - CLI argument parsing and error handling
+- Option to parse directly from file (`string` or `{ file: string }` source)
 - `commander` dependency for cli argument parsing
 
 ## 0.0.1

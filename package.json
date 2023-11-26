@@ -1,6 +1,6 @@
 {
   "name": "changelog-utils",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A collection of utilities to parse changelogs and build release notes",
   "main": "out/src/index.js",
   "bin": {
