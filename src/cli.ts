@@ -3,24 +3,7 @@
 import { Command } from 'commander';
 import parse from '.';
 import { formatChangelog } from './formatter';
-import androidStringResourceFormatter from './formatters/android-string-resource';
-import latestReleaseFormatter from './formatters/latest';
-import plainTextFormatter from './formatters/plain-text';
-
-function selectFormatter(param: string) {
-  switch (param) {
-    case undefined:
-      return plainTextFormatter();
-    case 'text':
-      return plainTextFormatter();
-    case 'latest':
-      return latestReleaseFormatter();
-    case 'android-string-resource':
-      return androidStringResourceFormatter();
-    default:
-      throw new Error(`Unknown formatter ${param}`);
-  }
-}
+import selectFormatter from './formatters';
 
 const program = new Command();
 program
