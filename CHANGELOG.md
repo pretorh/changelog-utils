@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.0
+
+### Added
+
+- Formatter parsing options
+- CLI format arguments for `--no-show-date` and `--list-item-prefix`
+
 ## 0.1.0
 
 ### Added
