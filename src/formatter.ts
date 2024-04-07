@@ -8,6 +8,11 @@ export interface IFormatter {
   includeRelease? (release: IParsedRelease): boolean;
 }
 
+export interface IFormatOptions {
+  showDate: boolean;
+  listItemPrefix: string;
+}
+
 export function formatChangelog(changelog: IParsedChangelog, formatter: IFormatter): string {
   const includeRelease = formatter.includeRelease || (() => true);
 

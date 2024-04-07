@@ -26,8 +26,32 @@ describe('can format changelog to string', () => {
       + '- Removed: B';
 
     it('formats in minimal output', () => {
-      const text = formatChangelog(changelog, plainTextFormatter());
+      const text = formatChangelog(changelog, plainTextFormatter({
+        showDate: true,
+        listItemPrefix: '- ',
+      }));
       expect(text).to.eql(expected);
+    });
+
+    describe('with options', () => {
+      it('without dates', () => {
+        const text = formatChangelog(changelog, plainTextFormatter({
+          showDate: false,
+          listItemPrefix: '- ',
+        }));
+        expect(text).to.not.contain('0.0.3 (2023-01-03)\n');
+        expect(text).to.contain('0.0.3\n');
+        expect(text).to.contain('0.0.2\n');
+        expect(text).to.contain('0.0.0\n');
+      });
+
+      it('with different listItemPrefix', () => {
+        const text = formatChangelog(changelog, plainTextFormatter({
+          showDate: true,
+          listItemPrefix: 'X ',
+        }));
+        expect(text).to.contain('\nX Added: A\n');
+      });
     });
   });
 
