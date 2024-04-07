@@ -2,7 +2,7 @@
 
 import { Command } from 'commander';
 import parse from '.';
-import { formatChangelog } from './formatter';
+import { IFormatOptions, formatChangelog } from './formatter';
 import selectFormatter from './formatters';
 
 const program = new Command();
@@ -16,8 +16,11 @@ program
   .description('Formats a changelog using a specified formatter')
   .argument('<CHANGELOG-file>', 'the changelog file to parse')
   .argument('[format]', 'the formatter used to print the changelog')
-  .action(async (file: string, format: string) => {
-    const formatter = selectFormatter(format, { showDate: true, listItemPrefix: '- ' });
+  .option('--show-date', 'include the date in () after each release number', true)
+  .option('--no-show-date')
+  .option('--list-item-prefix <characters>', 'characters to include before each list item', '- ')
+  .action(async (file: string, format: string, options: IFormatOptions) => {
+    const formatter = selectFormatter(format, options);
     const parsed = await parse({ file });
     process.stdout.write(formatChangelog(parsed, formatter));
   });
