@@ -17,7 +17,7 @@ program
   .argument('<CHANGELOG-file>', 'the changelog file to parse')
   .argument('[format]', 'the formatter used to print the changelog')
   .action(async (file: string, format: string) => {
-    const formatter = selectFormatter(format);
+    const formatter = selectFormatter(format, { showDate: true, listItemPrefix: '- ' });
     const parsed = await parse({ file });
     process.stdout.write(formatChangelog(parsed, formatter));
   });

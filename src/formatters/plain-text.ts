@@ -1,14 +1,15 @@
-import { IFormatter } from '../formatter';
+import { IFormatOptions, IFormatter } from '../formatter';
 import { IParsedRelease } from '../types';
 
-function mapChanges(prefix: string, items: string[]) {
-  return items.map((item: string) => `- ${prefix}: ${item}`);
-}
+export default function plainTextFormatter(options: IFormatOptions): IFormatter {
+  function mapChanges(prefix: string, items: string[]) {
+    return items.map((item: string) => `${options.listItemPrefix}${prefix}: ${item}`);
+  }
 
-export default function plainTextFormatter(): IFormatter {
   return {
     format: (release: IParsedRelease): string => {
-      const versionInfo = `${release.version || 'unreleased'} (${release.date || 'no date'})`;
+      const dateInfo = options.showDate ? ` (${release.date || 'no date'})` : '';
+      const versionInfo = `${release.version || 'unreleased'}${dateInfo}`;
 
       const added = mapChanges('Added', release.added);
       const changed = mapChanges('Changed', release.changed);

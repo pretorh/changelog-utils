@@ -1,8 +1,8 @@
-import { IFormatter } from '../formatter';
+import { IFormatOptions, IFormatter } from '../formatter';
 import { IParsedRelease } from '../types';
 import plainTextFormatter from './plain-text';
 
-export default function latestReleaseFormatter(): IFormatter {
+export default function latestReleaseFormatter(options: IFormatOptions): IFormatter {
   let alreadyIncluded = false;
 
   return {
@@ -14,6 +14,6 @@ export default function latestReleaseFormatter(): IFormatter {
       alreadyIncluded = true;
       return true;
     },
-    format: plainTextFormatter().format,
+    format: plainTextFormatter(options).format,
   };
 }

@@ -1,7 +1,7 @@
-import { IFormatter } from '../formatter';
+import { IFormatOptions, IFormatter } from '../formatter';
 import plainTextFormatter from './plain-text';
 
-export default function androidStringResourceFormatter(): IFormatter {
+export default function androidStringResourceFormatter(options: IFormatOptions): IFormatter {
   return {
     header: `<?xml version="1.0" encoding="utf-8"?>
 <resources>
@@ -9,6 +9,6 @@ export default function androidStringResourceFormatter(): IFormatter {
 `,
     footer: `"</string>
 </resources>`,
-    format: plainTextFormatter().format,
+    format: plainTextFormatter(options).format,
   };
 }
